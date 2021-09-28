@@ -46,7 +46,4 @@ int socket_recibir(socket_t* sock, char* buffer, int tamanio_msg);
 
 void socket_cerrar(socket_t *sock);
 
-
-
-
 #endif 

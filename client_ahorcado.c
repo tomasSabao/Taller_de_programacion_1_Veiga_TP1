@@ -1,8 +1,8 @@
 #include "ahorcado.h"
-
+/*
 int ahorcado_get_intentos(ahorcado_t* juego){
 	return juego->intentos;
-}
+}*/
 
 void ahorcado_set_intentos(ahorcado_t* juego, int intentos){
 	juego->intentos=intentos;
@@ -11,7 +11,7 @@ void ahorcado_set_intentos(ahorcado_t* juego, int intentos){
 void ahorcado_reducir_intentos(ahorcado_t* juego){
 	juego->intentos=juego->intentos - 1;
 }
-
+/*
 void ahorcado_set_longitud(ahorcado_t* juego,int longitud){
 	juego->longitud=longitud;
 }
@@ -21,7 +21,7 @@ void ahorcado_imprimir_estado(ahorcado_t* juego){
     printf("Palabra secreta: %.*s\n", juego->longitud, juego->incognita);
     printf("Le quedan %d intentos\n", juego->intentos);
     printf("Ingresar letra: ");
-}
+}*/
 
 bool ahorcado_chequear_letra(ahorcado_t* juego, char c){
 	bool esta=false;

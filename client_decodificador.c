@@ -1,5 +1,5 @@
 #include "decodificador.h"
-
+/*
 bool decodificador_obtener_fin_juego(decodificador_t* deco, void* ptr){
 	unsigned char estado;
 	memcpy(&estado, ptr, 1);
@@ -8,7 +8,7 @@ bool decodificador_obtener_fin_juego(decodificador_t* deco, void* ptr){
 		return false;
 	}
 	return true;
-}
+}*/
 
 //lado servidor
 
@@ -42,7 +42,6 @@ void decodificador_imprimir_mensaje(decodificador_t* deco, void* ptr){
 	//int fin_juego=decodificador_obtener_fin_juego(deco,ptr);
 	int intentos = decodificador_obtener_intentos(deco, ptr);
 	int longitud = decodificador_obtener_longitud(deco, ptr);
-	printf("Valor de longitud: %d\n",longitud);
 	char* aux_ptr=(char*)ptr;
 	printf("Palabra secreta: ");
 	for (int i=0; i<longitud; i++){
@@ -53,22 +52,22 @@ void decodificador_imprimir_mensaje(decodificador_t* deco, void* ptr){
 		}
 	}
 	printf("Te quedan %d intentos\n",intentos);
-	printf("Ingrese letra:");
+	printf("Ingrese letra:\n");
 }
 
 
 void decodificador_imprimir_resultado(decodificador_t* deco, void* ptr){
 	int intentos = decodificador_obtener_intentos(deco, ptr);
 	if (intentos > 0){
-		printf("Ganaste!\n");
+		printf("Ganaste!!\n");
 		return;
 	}
 	char* aux_ptr = (char*)ptr;
 	int longitud = decodificador_obtener_longitud(deco, ptr);
-	printf("Perdiste! La palabra secreta era: ");
+	printf("Perdiste! La palabra secreta era: '");
 	for (int i=0; i<longitud; i++){
 		if (i == (longitud-1)){
-			printf("%c\n",aux_ptr[3+i]);
+			printf("%c'\n",aux_ptr[3+i]);
 		} else {
 			printf("%c",aux_ptr[3+i]);
 		}
@@ -88,5 +87,5 @@ void decodificador_imprimir_msj_inicio(decodificador_t* deco, void* ptr){
 		}
 	}
 	printf("Te quedan %d intentos\n",intentos);
-	printf("Ingrese letra:");
+	printf("Ingrese letra:\n");
 }

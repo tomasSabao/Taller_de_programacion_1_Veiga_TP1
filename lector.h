@@ -21,4 +21,6 @@ FILE* lector_get_archivo(lector_t* lector);
 
 ssize_t lector_leer_linea(lector_t* lector, char** line_buff, ssize_t* largo);
 
+int lector_obtener_num_clientes(lector_t* lector, char* stream);
+
 #endif

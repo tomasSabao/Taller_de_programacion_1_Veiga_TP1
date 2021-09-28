@@ -12,7 +12,7 @@
 int main(int argc, char* argv[]){
 	//verificacion de datos
 	if (argc !=3){
-		printf("Numero de argumentos invalidos\n");
+		//printf("Numero de argumentos invalidos\n");
 		return 1;
 	}
 	char* host= argv[1];
@@ -27,11 +27,9 @@ int main(int argc, char* argv[]){
 	char mensaje;//este va a ser lo que se va a mandar
 	void* msg_ptr=malloc(sizeof(char)*1);//tamaño arbitrario
 	int tam_buffer=1;
-	int flag_recibio, long_mensaje;
+	int long_mensaje;
 	int bytes_enviados, contador_aux;
-	int bytes_recibidos;
 	bool juego_en_curso = true;
-	int caracteres_mandados;
 	char msg_recv[60];
 	bool no_conectado=true;
 	char datos_msj[3];
@@ -39,7 +37,7 @@ int main(int argc, char* argv[]){
 	while (juego_en_curso){
 		//espero que el servidor me diga que podemos arrancar
 		//necesito primero el byte
-		bytes_recibidos = 0;
+		int bytes_recibidos = 0;
 		if (no_conectado == true){
 			while(bytes_recibidos < 3){
 				//recibo 3 bytes fijos como header
@@ -60,8 +58,8 @@ int main(int argc, char* argv[]){
 		//imprimo como esta todo
 		//decodificador_imprimir_mensaje(&deco, (void*)msg_recv);
 		//recibo input por teclado
-		caracteres_mandados=0;
-		flag_recibio =in_manager_leer_palabra(&manager, &msg_ptr, &tam_buffer);
+		int caracteres_mandados=0;
+		int flag_recibio =in_manager_leer_palabra(&manager, &msg_ptr, &tam_buffer);
 		if (flag_recibio == -1){
 			//printf("Fallo la lectura de input por teclado\n");
 			break;
@@ -102,6 +100,5 @@ int main(int argc, char* argv[]){
 	decodificador_imprimir_resultado(&deco, msg_recv);
 	free(msg_ptr);
 	close(socket.skt);
-
 	return 0;
 }

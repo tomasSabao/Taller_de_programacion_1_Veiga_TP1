@@ -11,7 +11,7 @@ typedef struct decodificador{
 	int fd;
 }decodificador_t;
 
-bool decodificador_obtener_fin_juego(decodificador_t* deco, void* ptr);
+//bool decodificador_obtener_fin_juego(decodificador_t* deco, void* ptr);
 
 bool decodificador_obtener_juego_en_curso(decodificador_t* deco, void* ptr);
 

@@ -3,9 +3,9 @@
 
 int socket_set_hints(socket_t *sock,char modo){
 	if (modo == 's'){
-		modo='s';
+		sock->modo='s';
 	} else {
-		modo='c';
+		sock->modo='c';
 	}
 	memset(&(sock->hints), 0, sizeof(struct addrinfo));
 	sock->hints.ai_family=AF_INET; //direcciones IPv4
@@ -25,8 +25,7 @@ int socket_set_addrinfo(socket_t* sock, char* host, char* port){
 	int s=0;
 	if (sock->modo == 's'){
 		s=getaddrinfo(NULL, port, &(sock->hints), &(sock->result));
-	}
-	else{
+	} else{
 		s=getaddrinfo(host, port, &(sock->hints), &(sock->result));
 	}
 	if(s!=0){
@@ -84,10 +83,9 @@ int socket_crear_y_conectar(socket_t* sock){
 //funciona
 int socket_enviar(socket_t* sock, char* buffer, int tam_buffer){
 	int bytes_enviados=0;
-	int contador_aux;
 	int socket_todavia_valido = true;
 	while(bytes_enviados < tam_buffer && socket_todavia_valido){
-		contador_aux=send(sock->skt, &buffer[bytes_enviados],
+		int contador_aux=send(sock->skt, &buffer[bytes_enviados],
 							 tam_buffer-bytes_enviados, 0);
 		if (contador_aux == 0){
 			socket_todavia_valido = false;
@@ -125,10 +123,9 @@ int socket_aceptar(socket_t* bound_sock, socket_t* accept_sock){
 
 int socket_recibir(socket_t* sock, char* buffer, int tamanio_msg){
 	int bytes_recibidos = 0;
-	int s = 0;
 	bool socket_todavia_valido = true;
 	while (bytes_recibidos < tamanio_msg && socket_todavia_valido){
-		s = recv(sock->skt, &buffer[bytes_recibidos],
+		int s = recv(sock->skt, &buffer[bytes_recibidos],
 				 tamanio_msg - bytes_recibidos, 0);
 		if (s == 0){
 			socket_todavia_valido = false;

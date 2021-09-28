@@ -6,9 +6,9 @@ int in_manager_leer_palabra(in_manager_t* man, void** str, int* size){
 	int ch=0;
 	int largo=0;
 	void* aux_ptr=NULL;
-	int aux=0;
+	int aux;
 	//usamos getc para leer por caracter
-	while( (ch = getc(stdin)) && ch !=EOF &&  ch !='\n'){
+	while((ch = getc(stdin)) && ch !=EOF &&  ch !='\n'){
 		*((*(char**)str) + largo) = (char)ch;
 		//aumentamos el numero de carcteres leidos en uno
 		largo++;
@@ -20,8 +20,7 @@ int in_manager_leer_palabra(in_manager_t* man, void** str, int* size){
 			//falla la redimension
 			if(aux_ptr == NULL){
 				return -1;
-			}
-			else{
+			} else{
 				*str=aux_ptr;
 				(*size) = aux;
 			}

@@ -13,20 +13,21 @@ typedef struct ahorcado{
 }ahorcado_t;
 
 
-int ahorcado_get_intentos(ahorcado_t* juego);
+//int ahorcado_get_intentos(ahorcado_t* juego);
 
 void ahorcado_set_intentos(ahorcado_t* juego, int intentos);
 
 void ahorcado_reducir_intentos(ahorcado_t* juego);
 
-void ahorcado_set_longitud(ahorcado_t* juego,int longitud);
+//void ahorcado_set_longitud(ahorcado_t* juego,int longitud);
 
-void ahorcado_imprimir_estado(ahorcado_t* juego);
+//void ahorcado_imprimir_estado(ahorcado_t* juego);
 
 bool ahorcado_chequear_letra(ahorcado_t* juego, char c);
 
 void ahorcado_reemplazar_letra(ahorcado_t* juego, char letra);
 
+void ahorcado_iniciar_historial(ahorcado_t* juego);
 
 bool ahorcado_quedan_letras(ahorcado_t* juego);
 
