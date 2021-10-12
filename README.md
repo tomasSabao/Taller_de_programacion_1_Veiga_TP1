@@ -26,6 +26,8 @@ Wrapper para los sockets de unix.
 ### Input Manager
 Encargado de recibir un input de tamaño arbitrario por teclado
 
+![diagrama_clases](/Diagrama_clases.png)  
+
 ## Casos de interes:
 ### Lectura de input de tamaño arbitrariamente grande 
 Se usa un puntero a memoria dinamica, en el cual se van introduciendo los caracteres ingresados por teclado. Si la memoria asignada al puntero no alcanza para poner
@@ -35,7 +37,8 @@ La longitud en bytes de los mensajes que el servidor le manda al cliente no son 
 ### Lectura del archivo 
 Dado que no se puede meter la totalidad del archivo en memoria, se decide abrir el mismo e ir leyendo de a una linea por cada cliente que se conecta, almacenando la linea en un buffer de tamaño variable que luego sera utilizado para la ejecución del juego.
 ### Manejo de valores de intentos invalidos
-Se define como un valor invalido a números menores o iguales a 0. En el caso que se ingrese dicho valor, se decidió que la ejecución del servidor se detendria.
+Se define como un valor invalido a números menores o iguales a 0 y mayores a 127 (numeros mayores superan el tamanio de bits disponible para almacenar). En el caso que se ingrese dicho valor, se decidió que la ejecución del servidor se detendria.<br\>
+
 
 
 ## Pasos de comunicación entre cliente- servidor 
@@ -47,3 +50,6 @@ Se define como un valor invalido a números menores o iguales a 0. En el caso qu
 6. Servidor cierra el socket de comunicacion, y revisa si debe aceptar  mas clientes. Si debe aceptar mas, repite el paso 2
 7. No teniendo que aceptar mas clientes, el servidor cierra el socket que escucha conexiones y termina su ejecución
 
+## Entregas realizadas en el sercom
+
+![entregas](/TP1_sercom_entregas.png)  
